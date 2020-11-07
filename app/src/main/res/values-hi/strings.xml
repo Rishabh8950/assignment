@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AndroidAssignments</string>
+    <string name="hello">नमस्ते दुनिया</string>
+    <string name="login">
+लॉग इन करें</string>
+    <string name="password">कुंजिका</string>
+    <string name="message">Press Ok to leave this activity</string>
+    <string name="title">छोड़ना?</string>
+    <string name="ok">ठीक</string>
+    <string name="cancel">रद्द करना</string>
+    <string name="startChat">बातचीत शुरू कीजिए</string>
+    <string name="sendButton">भेजें</string>
+    <string name="next">आगे</string>
+    <string name="previous">
+पिछला</string>
+    <string name="loginActivity">लॉगिन गतिविधि</string>
+    <string name="testToolbar">टूलबार परीक्षण</string>
+    <string name="buttontext" translatable="false">I\’m a button</string>
+</resources>

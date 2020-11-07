@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">AndroidAssignments</string>
+    <string name="hello">Hello World!</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="login_name">login name</string>
+    <string name="what">What does this do?</string>
+    <string name="message">Press Ok to leave this activity</string>
+    <string name="title">Quit?</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="mbutton">I\'m a button</string>
+    <string name="startChat">Start Chat</string>
+    <string name="sendMessage">message...</string>
+    <string name="sendButton">SEND</string>
+    <string name="messageText">Message Text</string>
+    <string name="title_activity_test_toolbar">TestToolbar</string>
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="testToolbar">Test Toolbar</string>
+    <string name="loginName">Login Name</string>
+    <string name="pick_color">Do you want to go back?</string>
+    <string name="loginActivity">Login Activity</string>
+    <string name="startAct">START ACTIVITY</string>
+
+    <string name="buttontext" translatable="false">I\’m a button</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+
+</resources>
