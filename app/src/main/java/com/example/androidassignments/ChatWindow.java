@@ -4,7 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,19 +21,37 @@ import java.util.ArrayList;
 
 public class ChatWindow extends AppCompatActivity {
 
+
     EditText messageText;
     Button sendButton;
     ListView listView;
     ArrayList<String> messages = new ArrayList<>();
+    ChatDatabaseHelper myDb;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_window);
 
+         myDb=new ChatDatabaseHelper(this);
+        Cursor answer = myDb.getData();
+        Log.i("ChatWindow", "Cursor’s  column count =" + answer.getColumnCount() );
+        if(answer.getCount()==0){
+            Log.d("ChatWindow", "<NO MESSAGES YET>");
+        }else{
+            while(answer.moveToNext()) {
+                Log.i("ChatWindow", "SQL MESSAGE:" + answer.getString( answer.getColumnIndex( ChatDatabaseHelper.COL_2) ) );
+                messages.add(answer.getString(1));
+            }
+        }
+
+
         listView = findViewById(R.id.listView);
         sendButton = findViewById(R.id.sendButton);
         messageText = (EditText) findViewById(R.id.message);
+
 
         final ChatAdapter messageAdapter = new ChatAdapter(this, 0);
         listView.setAdapter(messageAdapter);
@@ -40,11 +61,17 @@ public class ChatWindow extends AppCompatActivity {
             public void onClick(View view) {
                 if(!messageText.getText().toString().equals("")){
                     messages.add(messageText.getText().toString());
+                    myDb.insertData(messageText.getText().toString());
                     messageAdapter.notifyDataSetChanged();
                     messageText.setText("");
                 }
             }
         });
+    }
+
+    protected void onDestroy() {
+        super.onDestroy();
+        myDb.close();
     }
 
     class ChatAdapter extends ArrayAdapter<String> {
