@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -114,6 +115,14 @@ public class Weatherforecast extends AppCompatActivity {
 
 
                 try {
+                    InputStream is=(InputStream) new URL("https://api.openweathermap.org/data/2.5/weather?" +
+                            "q=" + this.city + "," + "ca&" +
+                            "APPID=79cecf493cb6e52d25bb7b7050ff723c&" +
+                            "mode=xml&" +
+                            "units=metric").getContent();
+                    Drawable d=Drawable.createFromStream(is,"src name");
+
+                    imageview.setImageDrawable(d);
                     XmlPullParser parser = Xml.newPullParser();
                     parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
                     parser.setInput(in, null);
@@ -201,7 +210,10 @@ public class Weatherforecast extends AppCompatActivity {
         protected void onPostExecute(String a) {
             Log.i("post", a.toString() + "------------------");
             Progress_bar.setVisibility(View.INVISIBLE);
+
             imageview.setImageBitmap(picture);
+
+
 
             currentTemp2.setText(currentTemp + "C\u00b0");
             minTemp2.setText(minTemp + "C\u00b0");
